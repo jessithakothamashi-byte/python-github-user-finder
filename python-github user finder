@@ -1,0 +1,39 @@
+import requests
+
+username = input("Enter GitHub username: ")
+
+url = f"https://api.github.com/users/{username}"
+
+response = requests.get(url)
+
+if response.status_code == 200:
+    data = response.json()
+
+    print("\nGitHub User Information")
+    print("-----------------------")
+    print("Username:", data["login"])
+    print("Name:", data["name"])
+    print("Bio:", data["bio"])
+    print("Followers:", data["followers"])
+    print("Following:", data["following"])
+    print("Public Repositories:", data["public_repos"])
+else:
+    print("User not found.")
+
+OUTPUT:
+Enter GitHub username: octocat
+
+GitHub User Information
+-----------------------
+Username: octocat
+Name: The Octocat
+Bio: None
+Followers: 20
+Following: 0
+Public Repositories: 8
+
+project structure:
+python-github-user-finder/
+│
+├── github_user_finder.py
+└── README.md
